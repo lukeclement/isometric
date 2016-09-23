@@ -8,6 +8,7 @@ import javafx.scene.image.*;
 import javafx.scene.input.*;
 import javafx.event.*;
 import javafx.scene.paint.*;
+import javafx.scene.effect.*;
 
 public class main extends Application{
   public static int width=1000;
@@ -20,7 +21,7 @@ public class main extends Application{
     Group root=new Group();
     Scene scene=new Scene(root);
 
-    mainStage.setScene(scene);
+    alphaStage.setScene(scene);
 
     Canvas canvas=new Canvas(width,height);
     root.getChildren().add(canvas);
@@ -31,18 +32,15 @@ public class main extends Application{
     final long startNanoTime=System.nanoTime();
 
     gc.drawImage(alpha,255,255);
-
-    ImageView iv=new ImageView(alpha);
-    iv.setRotate(180);
-    SnapshotParameters params = new SnapshotParameters();
-    params.setFill(Color.TRANSPARENT);
-    Image rotated=iv.snapshot(params, null);
-    gc.drawImage(rotated,242,255)
+    Sprite test=new Sprite(242,255,alpha,180);
+    test.darken(0.5);
+    test.draw(gc);
 
     new AnimationTimer(){
       public void handle(long currentNanoTime){
 
       }
-    }
+    }.start();
+    alphaStage.show();
   }
 }
