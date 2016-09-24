@@ -28,7 +28,7 @@ public class main extends Application{
 
     GraphicsContext gc=canvas.getGraphicsContext2D();
 
-    Image alpha=new Image("Textures2/01.png");
+    Image alpha=new Image("Textures2/10.png");
     final long startNanoTime=System.nanoTime();
 
     gc.drawImage(alpha,255,255);
