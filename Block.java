@@ -12,11 +12,15 @@ class Block{
   private int height;
   private int objectType;
   private int orientation;
+  private Image start;
+  private ImageView iv;
+  private SnapshotParameters params = new SnapshotParameters();
 
-  public Block(int h, int oT, int o){
+  public Block(int h, int oT, int o, Image s){
     height=h;
     objectType=oT;
     orientation=o;
+    start=s;
   }
   //Getters
   public  int getHeight(){
@@ -42,7 +46,24 @@ class Block{
     return;
   }
   //Drawing
+  public void rotate(int degrees){
+    return;
+  }
   public void draw(GraphicsContext g){
-    
+    switch(objectType){
+      case 0:
+
+      break;
+      case 1:
+
+      break;
+      case 2:
+
+      break;
+      case 3:
+
+      break;
+    }
+    return;
   }
 }
