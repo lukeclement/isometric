@@ -13,31 +13,36 @@ class Sprite{
   private int posx;
   private int posy;
   private Image image;
-  private int rotation;
+  private double rotation;
   private ImageView iv;
   private ColorAdjust ca;
   private SnapshotParameters params = new SnapshotParameters();
 
-  public Sprite(int x,int y, Image i, int r){
+  public Sprite(int x,int y, Image i, double r,double d){
     posx=x;
     posy=y;
     image=i;
     rotation=r;
+    darkness=d;
     iv=new ImageView(image);
     ca=new ColorAdjust();
     params.setFill(Color.TRANSPARENT);
     iv.setRotate(rotation);
+    ca.setBrightness(darkness);
+    iv.setEffect(ca);
   }
   //The Dark Knight arrives
   public void darken(){
     darkness=darkness-0.1;
     ca.setBrightness(darkness);
     iv.setEffect(ca);
+    return;
   }
   public void darken(double amount){
     darkness=darkness-amount;
     ca.setBrightness(darkness);
     iv.setEffect(ca);
+    return;
   }
   //Getters
   public int getPosX(){
@@ -46,14 +51,14 @@ class Sprite{
   public int getPosY(){
     return posy;
   }
-  public int getRot(){
+  public double getRot(){
     return rotation;
   }
-  public int getDark(){
+  public double getDark(){
     return darkness;
   }
   //Setters
-  public void setRot(int r){
+  public void setRot(double r){
     rotation=r;
     iv.setRotate(rotation);
     return;
